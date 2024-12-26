@@ -1,35 +1,74 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+'use client'
 
-function App() {
-  const [count, setCount] = useState(0)
+import { useState, useEffect } from 'react'
+import Header from './components/Header'
+import Hero from './components/Hero'
+import About from './components/About'
+import Experience from './components/Experience'
+import Skills from './components/Skills'
+import CodingProfiles from './components/CodingProfiles'
+import Projects from './components/Projects'
+import Contact from './components/Contact'
+import Footer from './components/Footer'
+import SocialProfiles from './components/SocialProfiles'
+import { AnimatedSection } from './components/AnimatedSection'
+
+export default function Home() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY })
+    }
+
+    window.addEventListener('mousemove', handleMouseMove)
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove)
+    }
+  }, [])
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="min-h-screen bg-gray-900 text-white overflow-hidden">
+      {/* Animated background */}
+      <div 
+        className="fixed inset-0 opacity-50"
+        style={{
+          background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(29, 78, 216, 0.15), transparent 80%)`,
+        }}
+      />
+      
+      <div className="relative z-10">
+        <Header />
+        <main>
+          <AnimatedSection>
+            <Hero />
+          </AnimatedSection>
+          <AnimatedSection>
+            <SocialProfiles />
+          </AnimatedSection>
+          <AnimatedSection>
+            <About />
+          </AnimatedSection>
+          <AnimatedSection>
+            <Experience />
+          </AnimatedSection>
+          <AnimatedSection>
+            <Skills />
+          </AnimatedSection>
+          <AnimatedSection>
+            <CodingProfiles />
+          </AnimatedSection>
+          <AnimatedSection>
+            <Projects />
+          </AnimatedSection>
+          <AnimatedSection>
+            <Contact />
+          </AnimatedSection>
+        </main>
+        <Footer />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
 
-export default App

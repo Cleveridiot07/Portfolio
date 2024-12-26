@@ -5,7 +5,7 @@ export default function Hero() {
     <section id="hero" className="min-h-screen flex items-center justify-center py-20">
       <div className="text-center">
         <div className="mb-8 relative inline-block">
-          <image
+          <img
             src="/your-profile-picture.jpg"
             alt="Your Name"
             width={200}
