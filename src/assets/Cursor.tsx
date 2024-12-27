@@ -1,125 +1,167 @@
-import React, { useEffect } from 'react';
+import { useEffect, useRef } from "react";
 
-const CustomCursor: React.FC = () => {
-    useEffect(() => {
-        const canvas = document.querySelector("canvas") as HTMLCanvasElement;
-        const ctx = canvas.getContext('2d');
+const CustomCursor = () => {
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
-        // Check if ctx is null
-        if (!ctx) {
-            console.error("Failed to get canvas context.");
-            return; // Exit if the context is not available
-        }
+  useEffect(() => {
+    const canvas = canvasRef.current!;
+    const ctx = canvas.getContext("2d");
 
-        // for intro motion
-        let mouseMoved = false;
+    if (!ctx) {
+      console.error("Failed to get canvas context.");
+      return;
+    }
 
-        const pointer = {
-            x: 0.5 * window.innerWidth,
-            y: 0.5 * window.innerHeight,
-        };
-        
-        const params = {
-            pointsNumber: 40,
-            widthFactor: 0.3,
-            mouseThreshold: 0.6,
-            spring: 0.4,
-            friction: 0.5
-        };
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-        const trail = new Array(params.pointsNumber);
-        for (let i = 0; i < params.pointsNumber; i++) {
-            trail[i] = {
-                x: pointer.x,
-                y: pointer.y,
-                dx: 0,
-                dy: 0,
-            };
-        }
+    // Particle System
+    const particles: Particle[] = [];
+    const particleCount = 100;
+    const connectionDistance = 100;
 
-        const updateMousePosition = (eX: number, eY: number) => {
-            pointer.x = eX;
-            pointer.y = eY;
-            console.log(`Mouse Position: ${pointer.x}, ${pointer.y}`); // Debugging log
-        };
+    class Particle {
+      x: number;
+      y: number;
+      size: number;
+      speedX: number;
+      speedY: number;
 
-        window.addEventListener("click", (e) => {
-            updateMousePosition(e.pageX, e.pageY);
-        });
-        window.addEventListener("mousemove", (e) => {
-            mouseMoved = true;
-            updateMousePosition(e.pageX, e.pageY);
-        });
-        window.addEventListener("touchmove", (e) => {
-            mouseMoved = true;
-            updateMousePosition(e.targetTouches[0].pageX, e.targetTouches[0].pageY);
-        });
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = Math.random() * 3 - 1.5;
+        this.speedY = Math.random() * 3 - 1.5;
+      }
 
-        const setupCanvas = () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            console.log(`Canvas Size: ${canvas.width} x ${canvas.height}`); // Debugging log
-        };
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
 
-        const update = (t: number) => {
-            if (!mouseMoved) {
-                pointer.x = (0.5 + 0.3 * Math.cos(0.002 * t) * (Math.sin(0.005 * t))) * window.innerWidth;
-                pointer.y = (0.5 + 0.2 * (Math.cos(0.005 * t)) + 0.1 * Math.cos(0.01 * t)) * window.innerHeight;
-            }
+        if (this.x > canvas.width) this.x = 0;
+        else if (this.x < 0) this.x = canvas.width;
 
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            trail.forEach((p, pIdx) => {
-                const prev = pIdx === 0 ? pointer : trail[pIdx - 1];
-                const spring = pIdx === 0 ? 0.4 * params.spring : params.spring;
-                p.dx += (prev.x - p.x) * spring;
-                p.dy += (prev.y - p.y) * spring;
-                p.dx *= params.friction;
-                p.dy *= params.friction;
-                p.x += p.dx;
-                p.y += p.dy;
-            });
+        if (this.y > canvas.height) this.y = 0;
+        else if (this.y < 0) this.y = canvas.height;
+      }
 
-            ctx.lineCap = "round";
+      draw() {
+        ctx.fillStyle = "rgba(0, 150, 255, 0.5)";
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle());
+    }
+
+    // Mouse Trail
+    const trail = new Array(40).fill(null).map(() => ({
+      x: canvas.width / 2,
+      y: canvas.height / 2,
+      dx: 0,
+      dy: 0,
+    }));
+
+    const pointer = { x: canvas.width / 2, y: canvas.height / 2 };
+
+    const params = {
+      widthFactor: 0.3,
+      spring: 0.4,
+      friction: 0.5,
+    };
+
+    const updateMousePosition = (e: MouseEvent | TouchEvent) => {
+      const isTouchEvent = "touches" in e;
+      pointer.x = isTouchEvent ? e.touches[0].clientX : e.clientX;
+      pointer.y = isTouchEvent ? e.touches[0].clientY : e.clientY;
+    };
+
+    window.addEventListener("mousemove", updateMousePosition);
+    window.addEventListener("touchmove", updateMousePosition);
+
+    // Animation
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Update and draw particles
+      particles.forEach((particle) => {
+        particle.update();
+        particle.draw();
+
+        particles.forEach((otherParticle) => {
+          const dx = particle.x - otherParticle.x;
+          const dy = particle.y - otherParticle.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < connectionDistance) {
             ctx.beginPath();
-            ctx.moveTo(trail[0].x, trail[0].y);
-
-            // Set the stroke color to white
-            ctx.strokeStyle = 'white';
-
-            for (let i = 1; i < trail.length - 1; i++) {
-                const xc = 0.5 * (trail[i].x + trail[i + 1].x);
-                const yc = 0.5 * (trail[i].y + trail[i + 1].y);
-                ctx.quadraticCurveTo(trail[i].x, trail[i].y, xc, yc);
-                ctx.lineWidth = params.widthFactor * (params.pointsNumber - i);
-                ctx.stroke();
-            }
-            ctx.lineTo(trail[trail.length - 1].x, trail[trail.length - 1].y);
+            ctx.strokeStyle = `rgba(0, 150, 255, ${1 - distance / connectionDistance})`;
+            ctx.lineWidth = 1;
+            ctx.moveTo(particle.x, particle.y);
+            ctx.lineTo(otherParticle.x, otherParticle.y);
             ctx.stroke();
-        };
+          }
+        });
+      });
 
-        setupCanvas();
-        update(0);
-        window.addEventListener("resize", setupCanvas);
+      // Update and draw trail
+      trail.forEach((segment, index) => {
+        const prev = index === 0 ? pointer : trail[index - 1];
+        const spring = index === 0 ? params.spring * 0.4 : params.spring;
 
-        const animate = (timestamp: number) => {
-            update(timestamp);
-            window.requestAnimationFrame(animate);
-        };
+        segment.dx += (prev.x - segment.x) * spring;
+        segment.dy += (prev.y - segment.y) * spring;
+        segment.dx *= params.friction;
+        segment.dy *= params.friction;
+        segment.x += segment.dx;
+        segment.y += segment.dy;
+      });
 
-        window.requestAnimationFrame(animate);
+      ctx.lineCap = "round";
+      ctx.beginPath();
+      ctx.moveTo(trail[0].x, trail[0].y);
+      ctx.strokeStyle = "white";
 
-        return () => {
-            // Cleanup event listeners on component unmount
-            window.removeEventListener("mousemove", (e) => updateMousePosition(e.pageX, e.pageY));
-            window.removeEventListener("click", (e) => updateMousePosition(e.pageX, e.pageY));
-            window.removeEventListener("touchmove", (e) => updateMousePosition(e.targetTouches[0].pageX, e.targetTouches[0].pageY));
-            window.removeEventListener("resize", setupCanvas);
-        };
-    }, []);
+      for (let i = 1; i < trail.length - 1; i++) {
+        const xc = (trail[i].x + trail[i + 1].x) / 2;
+        const yc = (trail[i].y + trail[i + 1].y) / 2;
+        ctx.quadraticCurveTo(trail[i].x, trail[i].y, xc, yc);
+        ctx.lineWidth = params.widthFactor * (trail.length - i);
+        ctx.stroke();
+      }
 
-    return (
-        <canvas className='z-50' style={{ position: 'fixed', top: 0, left: 0, pointerEvents: 'none', backgroundColor: 'rgba(0, 0, 0, 0.1)' }}></canvas>
-    );
+      ctx.lineTo(trail[trail.length - 1].x, trail[trail.length - 1].y);
+      ctx.stroke();
+
+      requestAnimationFrame(animate);
+    };
+
+    // Resize canvas on window resize
+    const handleResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+
+    window.addEventListener("resize", handleResize);
+    animate();
+
+    return () => {
+      window.removeEventListener("mousemove", updateMousePosition);
+      window.removeEventListener("touchmove", updateMousePosition);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 bg-black w-full h-full pointer-events-none"
+    />
+  );
 };
 
 export default CustomCursor;

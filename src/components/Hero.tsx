@@ -110,7 +110,7 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
@@ -129,7 +129,7 @@ export default function Hero() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
             </motion.div>
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
     </div>
