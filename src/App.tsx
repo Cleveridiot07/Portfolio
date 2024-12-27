@@ -8,31 +8,33 @@ import Experience from "./components/Experience";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Layout from "./Layout/Layout";
+import Footer from "./components/Footer";
 
 export default function App() {
   return (
     <Router>
       <Layout>
-      <Navbar />
+        <Navbar />
 
-      <main className="text-white">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Hero />
-                <Skills />
-                <CodingProfiles />
-                <GithubStats />
-                <Experience />
-                <Projects />
-              </>
-            }
-          />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </main>
+        <main className="text-white">
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <Hero />
+                  <Skills />
+                  <CodingProfiles />
+                  {/* <GithubStats /> */}
+                </>
+              }
+            />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/experience" element={<Experience />} />
+            <Route path="/projects" element={<Projects />} />
+          </Routes>
+        </main>
+        <Footer />
       </Layout>
     </Router>
   );

@@ -1,105 +1,112 @@
-'use client'
-
-import { motion } from 'framer-motion'
-import { Calendar, MapPin, Building2 } from 'lucide-react'
+import { motion } from 'framer-motion';
 
 const experiences = [
   {
-    title: "Senior Frontend Developer",
-    company: "Tech Corp",
-    location: "San Francisco, CA",
-    duration: "2021 - Present",
-    description: [
-      "Led development of next-generation web applications using React and TypeScript",
-      "Improved application performance by 40% through optimization techniques",
-      "Mentored junior developers and conducted code reviews",
-    ]
+    role: 'SDE Intern',
+    company: 'EASYED',
+    location: 'Ghaziabad, UP',
+    duration: 'October 2015 - Present',
+    achievements: [
+      'Optimized frontend-backend integration, boosting communication efficiency across APIs and elevating user experience and system performance.',
+      'Revamped API architecture, reducing latency, enabling faster feature deployments, and cutting the typical release cycle by 3 weeks.',
+      'Conducted comprehensive API testing, improving reliability and performance, ensuring seamless frontend-backend integration.',
+    ],
+  },
+];
+
+const openSourceContributions = [
+  {
+    event: 'Hacktoberfest 2024',
+    location: 'Online',
+    duration: 'October 2024 – November 2024',
+    contributions: [
+      'Built open-source solutions that expanded accessibility and functionality, supporting a community of 500+ developers.',
+      'Enhanced user interface and experience across projects like QR Code Generator, positively impacting over 1,000 users.',
+    ],
   },
   {
-    title: "Full Stack Developer",
-    company: "Innovation Labs",
-    location: "New York, NY",
-    duration: "2019 - 2021",
-    description: [
-      "Developed and maintained multiple full-stack applications",
-      "Implemented CI/CD pipelines reducing deployment time by 60%",
-      "Collaborated with cross-functional teams to deliver projects on time",
-    ]
+    event: 'GSSOC 2024',
+    location: 'Online',
+    duration: 'September 2024 – November 2024',
+    contributions: [
+      'Enhanced functionality of Pen Craft, increasing user engagement through intuitive design improvements.',
+      'Containerized JournalForge with Docker, optimizing deployment workflows for 50+ developers, achieving faster deployment times with consistent environments across dev and production.',
+    ],
   },
-  {
-    title: "Software Engineer",
-    company: "StartUp Inc",
-    location: "Boston, MA",
-    duration: "2017 - 2019",
-    description: [
-      "Built RESTful APIs using Node.js and Express",
-      "Integrated third-party services and payment gateways",
-      "Participated in agile development processes",
-    ]
-  },
-]
+];
 
 export default function Experience() {
   return (
-    <section className="py-20 bg-black relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_50%,#1a1a1a,#000000)]" />
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent"
-          style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.3)' }}
-        >
-          Experience
-        </motion.h2>
-
-        <div className="space-y-12">
-          {experiences.map((experience, index) => (
-            <motion.div
-              key={experience.title}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-cyan-500/5 rounded-xl blur-xl" />
-              <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:border-white/20 transition-colors">
-                <div className="grid md:grid-cols-[1fr_2fr] gap-6">
-                  <div>
-                    <h3 className="text-xl font-semibold text-white mb-2">{experience.title}</h3>
-                    <div className="space-y-2 text-gray-400">
-                      <div className="flex items-center gap-2">
-                        <Building2 className="w-4 h-4" />
-                        <span>{experience.company}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <MapPin className="w-4 h-4" />
-                        <span>{experience.location}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Calendar className="w-4 h-4" />
-                        <span>{experience.duration}</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <ul className="space-y-2">
-                      {experience.description.map((item, i) => (
-                        <li key={i} className="flex items-start gap-2">
-                          <span className="text-blue-500 mt-1.5">•</span>
-                          <span className="text-gray-300">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+    <div className="">
+      {/* Experience Section */}
+      <section id="experience" className="pt-24">
+        <div className="container mx-auto px-4">
+          <motion.h2
+            className="text-3xl font-bold mb-8 text-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            Experience
+          </motion.h2>
+          <div className="min-w-screen flex items-center justify-center px-5 pt-5">
+            {experiences.map((exp, index) => (
+              <div key={index} className="rounded-lg shadow-xl bg-gray-900 text-white mb-8 w-full max-w-4xl">
+                <div className="border-b border-gray-800 px-8 py-3">
+                  <div className="inline-block w-3 h-3 mr-2 rounded-full bg-red-500"></div>
+                  <div className="inline-block w-3 h-3 mr-2 rounded-full bg-yellow-300"></div>
+                  <div className="inline-block w-3 h-3 mr-2 rounded-full bg-green-400"></div>
+                </div>
+                <div className="px-8 py-6">
+                  <h3 className="text-xl font-bold">{exp.role}</h3>
+                  <p className="text-sm text-gray-400">{exp.company} | {exp.location}</p>
+                  <p className="text-sm text-gray-400">{exp.duration}</p>
+                  <ul className="mt-3 list-disc list-inside">
+                    {exp.achievements.map((achievement, idx) => (
+                      <li key={idx} className="text-gray-300">{achievement}</li>
+                    ))}
+                  </ul>
                 </div>
               </div>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
-  )
-}
+      </section>
 
+      {/* Open Source Contributions Section */}
+      <section id="openSource" className="pt-24">
+        <div className="container mx-auto px-4">
+          <motion.h2
+            className="text-3xl font-bold mb-8 text-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            Open Source Contributions
+          </motion.h2>
+          <div className="min-w-screen flex flex-col items-center justify-center px-5 space-y-8">
+            {openSourceContributions.map((contribution, index) => (
+              <div key={index} className="rounded-lg shadow-xl bg-gray-900 text-white w-full max-w-4xl">
+                <div className="border-b border-gray-800 px-8 py-3">
+                  <div className="inline-block w-3 h-3 mr-2 rounded-full bg-red-500"></div>
+                  <div className="inline-block w-3 h-3 mr-2 rounded-full bg-yellow-300"></div>
+                  <div className="inline-block w-3 h-3 mr-2 rounded-full bg-green-400"></div>
+                </div>
+                <div className="px-8 py-6">
+                  <h3 className="text-xl font-bold">{contribution.event}</h3>
+                  <p className="text-sm text-gray-400">{contribution.location}</p>
+                  <p className="text-sm text-gray-400">{contribution.duration}</p>
+                  <ul className="mt-3 list-disc list-inside">
+                    {contribution.contributions.map((detail, idx) => (
+                      <li key={idx} className="text-gray-300">{detail}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
