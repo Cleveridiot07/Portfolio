@@ -12,7 +12,6 @@ interface ExperienceSectionCardProps {
 }
 
 export default function ExperienceSectionCard({
-  title = "Experience",
   role = "SDE Intern",
   company = "EASYED",
   location = "Ghaziabad, UP",

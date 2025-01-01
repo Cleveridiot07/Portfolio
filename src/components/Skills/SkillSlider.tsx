@@ -1,6 +1,12 @@
 import SkillCard from "./SkillCard";
+import { TypeSkills } from "../../typedef";
 
-const SkillSlider = ({ title = "Skills", skills = [] }) => {
+interface SkillSliderProps {
+  title?: string;
+  skills: TypeSkills[];
+}
+
+const SkillSlider: React.FC<SkillSliderProps> = ({ title = "Skills", skills = [] }) => {
   return (
     <div>
       <div className="w-full text-center text-5xl font-semibold mb-4">{title}</div>
@@ -16,7 +22,7 @@ const SkillSlider = ({ title = "Skills", skills = [] }) => {
             />
           ))
         ) : (
-          <></>
+          <p className="text-gray-500">No skills available.</p>
         )}
       </div>
     </div>

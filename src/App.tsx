@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Common/Navbar/Navbar";
 import Hero from "./components/LandingPage/Hero/Hero";
 import About from "./components/About/About";
-// import CodingProfiles from "./components/LandingPage/CodingProfiles/CodingProfiles";
+import CodingProfiles from "./components/LandingPage/CodingProfiles/CodingProfiles";
 // import GithubStats from "./components/LandingPage/GithubStats/GithubStats";
 import Experience from "./components/Experience/Experience";
 import Projects from "./components/Projects/Projects";
@@ -25,8 +25,9 @@ export default function App() {
                 <>
                   <Hero />
                   <About />
-                  {/* <CodingProfiles /> */}
+                  <CodingProfiles />
                   {/* <GithubStats /> */}
+                  <Footer />
                 </>
               }
             />
@@ -36,7 +37,7 @@ export default function App() {
             <Route path="/projects" element={<Projects />} />
           </Routes>
         </main>
-        <Footer />
+    
       </Layout>
     </Router>
   );

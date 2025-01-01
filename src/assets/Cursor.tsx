@@ -47,10 +47,12 @@ const CustomCursor = () => {
       }
 
       draw() {
-        ctx.fillStyle = "#ffffff";
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
+        if (ctx) {
+          ctx.fillStyle = "#ffffff";
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
       }
     }
 

@@ -4,7 +4,6 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Github, GitPullRequest, GitCommit, Star, Users } from 'lucide-react'
 
-// Note: Replace these with actual data fetched from GitHub API
 const githubStats = {
   totalContributions: 1337,
   pullRequests: 42,

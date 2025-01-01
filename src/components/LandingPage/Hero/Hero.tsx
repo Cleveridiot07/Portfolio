@@ -26,7 +26,6 @@ export default function Hero() {
       return () => clearTimeout(resetTimeout);
     }
   }, [text]);
-  
 
   // Cursor blink effect
   useEffect(() => {
@@ -97,7 +96,11 @@ export default function Hero() {
                 />
               </div>
             </div>
-            <div className=" w-full flex justify-center mt-5">
+            <a
+              href="https://firebasestorage.googleapis.com/v0/b/iview-fbeeb.appspot.com/o/resumes%2FNikhil%20Saxena%20Resume.pdf?alt=media&token=d4f5f68a-4d07-4c8e-b002-70321e986194"
+              download="Nikhil_Saxena_Resume.pdf" // This triggers the download
+              className="w-full flex justify-center mt-5"
+            >
               <motion.button
                 className="px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg flex items-center gap-2 hover:opacity-90 transition-opacity"
                 whileHover={{ scale: 1.05 }}
@@ -106,7 +109,7 @@ export default function Hero() {
                 <Download size={20} />
                 Download Resume
               </motion.button>
-            </div>
+            </a>
           </motion.div>
 
           {/* <motion.div

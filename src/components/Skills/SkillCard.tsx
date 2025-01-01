@@ -1,10 +1,17 @@
 import "./index.css";
 
-const SkillCard = ({
-  oddEven = true,
-  skillName = "Hover Me",
-  iconPath = "./Skills/ReactJS.png",
-  skillLevel="Beginner",
+interface SkillCardProps {
+  oddEven?: boolean;
+  skillName?: string;
+  iconPath?: string;
+  skillLevel?: string;
+}
+
+const SkillCard: React.FC<SkillCardProps> = ({
+  oddEven,
+  skillName,
+  iconPath,
+  skillLevel,
 }) => {
   return (
     <>

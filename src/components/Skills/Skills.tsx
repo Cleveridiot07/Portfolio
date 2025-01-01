@@ -1,6 +1,7 @@
 import SkillSlider from "./SkillSlider";
+import { TypeSkills } from "../../typedef";
 
-const Languages = [
+const Languages: TypeSkills[] = [
   {
     skillName: "Javascript",
     skillLevel: "Intermediate",
@@ -11,20 +12,14 @@ const Languages = [
     skillLevel: "Intermediate",
     iconPath: "./Skills/Cpp.png",
   },
-
   {
     skillName: "Python",
     skillLevel: "Intermediate",
     iconPath: "./Skills/Python.png",
   },
-  {
-    skillName: "Java",
-    skillLevel: "Intermediate",
-    iconPath: "./Skills/Java.png",
-  },
 ];
 
-const frontend = [
+const frontend: TypeSkills[] = [
   {
     skillName: "HTML5",
     skillLevel: "Intermediate",
@@ -47,7 +42,7 @@ const frontend = [
   },
 ];
 
-const Backend = [
+const Backend: TypeSkills[] = [
   {
     skillName: "Node JS",
     skillLevel: "Intermediate",
@@ -65,7 +60,7 @@ const Backend = [
   },
 ];
 
-const DevTools = [
+const DevTools: TypeSkills[] = [
   {
     skillName: "Postman",
     skillLevel: "Intermediate",
@@ -81,7 +76,19 @@ const DevTools = [
     skillLevel: "Intermediate",
     iconPath: "./Skills/Docker.png",
   },
+];
 
+const Database: TypeSkills[] = [
+  {
+    skillName: "MongoDB",
+    skillLevel: "Intermediate",
+    iconPath: "./Skills/MongoDB.png",
+  },
+  {
+    skillName: "MySQL",
+    skillLevel: "Intermediate",
+    iconPath: "./Skills/Mysql.png",
+  },
 ];
 
 const Skills = () => {
@@ -89,13 +96,18 @@ const Skills = () => {
     { title: "Languages", skills: Languages },
     { title: "Frontend", skills: frontend },
     { title: "Backend", skills: Backend },
+    { title: "Database", skills: Database },
     { title: "DevTools", skills: DevTools },
   ];
 
   return (
     <div className="w-screen min-h-screen space-y-10 pt-28">
       {skillCategories.map((category, index) => (
-        <SkillSlider key={index} title={category.title} skills={category.skills} />
+        <SkillSlider
+          key={index}
+          title={category.title}
+          skills={category.skills}
+        />
       ))}
     </div>
   );

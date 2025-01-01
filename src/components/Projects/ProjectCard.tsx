@@ -1,99 +1,107 @@
-import { Github, Link as LinkIcon, Sprout } from 'lucide-react';
+import { SkillsType } from "../../interfaces";
+import { ProjectCardProps } from "../../interfaces";
 
-// Utility function to generate random colors
-const getRandomColor = () => {
-  const colors = [
-    "bg-red-500/60 text-red-300",
-    "bg-blue-500/60 text-blue-300",
-    "bg-green-500/60 text-green-300",
-    "bg-yellow-500/60 text-yellow-300",
-    "bg-orange-500/60 text-orange-300",
-    "bg-purple-500/60 text-purple-300",
-    "bg-cyan-500/60 text-cyan-300",
-    "bg-pink-500/60 text-pink-300",
-  ];
-  return colors[Math.floor(Math.random() * colors.length)];
+
+const Skills:SkillsType = {
+  Javascript: "./Skills/JS.png",
+  Cpp: "./Skills/Cpp.png",
+  Python: "./Skills/Python.png",
+  Java: "./Skills/Java.png",
+  HTML5: "./Skills/HTML5.png",
+  CSS3: "./Skills/CSS.png",
+  TailwindCSS: "./Skills/Tailwind.png",
+  ReactJS: "./Skills/ReactJS.png",
+  NodeJS: "./Skills/NodeJs.png",
+  ExpressJS: "./Skills/Express.png",
+  Docker: "./Skills/Docker.png",
+  MongoDB: "./Skills/MongoDB.png",
+  Typescript: "./Skills/Typescript.png",
+  Default: "./Skills/Skill.png",
+  AWS: "./Skills/Aws.png",
 };
 
-export function ProjectCard({
-  title = "FootPrint",
-  subtitle = "RESTORE NATURE. REMOVE CARBON.",
-  description = "Carbon FootPrint is a sustainable platform with a Carbon Tracker, Meal Planner, and chatbot.",
-  technologies = ["HTML5", "CSS3", "JavaScript", "React", "Redux"],
-  imageSrc = "https://ninjainterview.com/images/blog/video-interview-platform.png?v=1671197900125901718",
-  visitLink = "#",
-  sourceLink = "#",
-}) {
+const ProjectCard: React.FC<ProjectCardProps> = ({
+  title,
+  description,
+  techStack = [],
+  lastUpdated,
+  imageUrl,
+  githubUrl,
+  visitUrl,
+  imageBg = "bg-gray-50",
+}) => {
   return (
-    <div className="relative md:max-w-[80vw] bg-black overflow-hidden p-10 rounded-sm text-white group">
-      <div className="absolute inset-0">
-        <img
-          src={imageSrc}
-          alt={title}
-          className="h-full w-full object-cover opacity-80"
-        />
-      </div>
-
-      {/* Hover Background Effect */}
-      <div className="absolute inset-0 bg-gradient-to-r from-gray-900 to-slate-200 scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100"></div>
-
-      <div className="relative px-8 py-12 lg:px-12 lg:py-16">
-        <div className="flex items-center gap-2 mb-4">
-          <Sprout className="h-8 w-8 text-emerald-400" />
-          <h2 className="text-2xl font-bold">{title}</h2>
+    <div className="flex items-center h-full justify-center">
+      <div className="flex w-full max-w-4xl h-full flex-col overflow-hidden rounded-sm bg-white shadow-lg lg:flex-row">
+        {/* Illustration */}
+        <div className="w-full bg-sky-900 lg:w-1/2">
+          <img
+            src={imageUrl || "/placeholder.svg?height=400&width=400"}
+            alt="Project Illustration"
+            className=  {`h-full ${imageBg} object-fill  w-full`}
+          />
         </div>
 
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-6 lg:text-5xl">
-            {subtitle.split('.').map((line, index) => (
-              <span
-                key={index}
-                className={`block ${
-                  index === 0 ? `${getRandomColor()}` : ''
-                }`}
-              >
-                {line.trim()}
-              </span>
-            ))}
-          </h1>
+        {/* Content */}
+        <div className="w-full p-8 lg:w-1/2">
+          <div className="space-y-1 pb-6">
+            <div className="flex items-center justify-between">
+              <h1 className="text-3xl text-black font-bold">{title}</h1>
 
-          <p className="text-lg text-slate-50 italic">{description}</p>
-        </div>
-
-        <div className="space-y-6">
-          <div className="flex flex-wrap gap-3">
-            {technologies.map((tech, index) => (
-              <span
-                key={index}
-                className={`px-3 py-1 rounded-full text-sm ${getRandomColor()}`}
-              >
-                {tech}
-              </span>
-            ))}
+            </div>
+            <p className="text-sm text-gray-500">{`Last updated ${lastUpdated || 'N/A'}`}</p>
           </div>
 
-          <div className="flex gap-4">
-            <a
-              href={visitLink}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 transition-colors rounded-lg text-white font-medium"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <LinkIcon className="h-4 w-4" />
-              Visit App
-            </a>
-            <a
-              href={sourceLink}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-slate-700 hover:bg-slate-600 transition-colors rounded-lg text-white font-medium"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Github className="h-4 w-4" />
-              Source Code
-            </a>
+          <div className="space-y-6">
+            {/* Project Description */}
+            <div className="space-y-2">
+              <h3 className="font-semibold text-gray-900">About Project</h3>
+              <p className="text-sm text-gray-600">{description}</p>
+            </div>
+
+            {/* Tech Stack */}
+            {techStack.length > 0 && (
+              <div className="space-y-3">
+                <h3 className="font-semibold text-gray-900">Tech Stack</h3>
+                <div className="grid grid-cols-2 gap-2 sm:grid-cols-2">
+                  {techStack.map((tech, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center gap-2 rounded-sm border text-gray-950 font-semibold bg-white px-3 py-2 text-sm transition-colors hover:bg-gray-50"
+                    >
+                      <img
+                        src={Skills[tech] || Skills.Default}
+                        alt={tech}
+                        className="h-8 w-8"
+                      />
+                      {tech}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="grid grid-cols-3 gap-3">
+              <a
+                href={visitUrl}
+                className="flex items-center justify-center gap-2 rounded-sm border bg-sky-950 px-3 text-white py-2 text-sm transition-colors hover:bg-sky-800"
+              >
+                <img src="./visit.svg" alt="Visit" className="h-6 w-6" />
+                Visit
+              </a>
+              <a
+                href={githubUrl}
+                className="flex items-center justify-center gap-2 rounded-sm border bg-gray-200 px-3 py-2 text-sm text-black transition-colors hover:bg-gray-50"
+              >
+                <img src="./Skills/Github.png" alt="GitHub" className="h-6 w-5" />
+                GitHub
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default ProjectCard;

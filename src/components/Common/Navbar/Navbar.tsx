@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Download } from "lucide-react";
@@ -16,13 +14,19 @@ export default function Navbar() {
     { name: "Contact", path: "/contact" },
   ];
 
+  
+
+  // Normalize paths by removing trailing slashes
+  const normalizePath = (path:string) => path.replace(/^\/+/, "");
+  console.log(normalizePath(location.pathname));
+
   return (
     <div className="w-screen z-30 flex justify-center fixed">
       <nav className="w-[80vw] rounded-md m-2 bg-white/10 backdrop-blur-sm z-50 border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="text-white text-2xl font-bold">
-              CLEVERIDIOT
+              CleverIdiot
             </Link>
           </div>
           <div className="hidden md:flex space-x-4">
@@ -32,7 +36,9 @@ export default function Navbar() {
                   key={item.name}
                   to={item.path}
                   className={`text-white hover:text-cyan-500 ${
-                    location.pathname === item.path ? "text-sky-500" : ""
+                    normalizePath(location.pathname) == normalizePath(item.path)
+                      ? "text-sky-400"
+                      : ""
                   }`}
                 >
                   {item.name}
@@ -65,7 +71,9 @@ export default function Navbar() {
                   key={item.name}
                   to={item.path}
                   className={`block px-3 py-2 rounded-md text-base font-medium text-white hover:text-cyan-500 ${
-                    location.pathname === item.path ? "text-sky-500" : ""
+                    normalizePath(location.pathname) === normalizePath(item.path)
+                      ? "text-sky-500"
+                      : ""
                   }`}
                 >
                   {item.name}

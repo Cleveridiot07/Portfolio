@@ -1,108 +1,74 @@
-"use client";
 
-import { motion } from "framer-motion";
-import { Github, Globe, ArrowUpRight } from "lucide-react";
-import {
-  ReactIcon,
-  NodeIcon,
-  DatabaseIcon,
-  TypeScriptIcon,
-  NextJsIcon,
-  StripeIcon,
-  SocketIcon,
-  VueIcon,
-} from "./TechIcons";
-import { ProjectCard } from "./ProjectCard";
+import ProjectSlider from "./ProjectSlider";
+import { Project } from "../../interfaces";
 
-const projects = [
+
+const projects:Project[] = [
   {
-    title: "AI-Powered Task Manager",
+    title: "Note Forge",
     description:
-      "Smart task management application with AI-driven prioritization and natural language processing capabilities.",
-    image: "/placeholder.svg",
-    techStack: [ReactIcon, NodeIcon, DatabaseIcon],
-    liveUrl: "https://project1.demo",
-    githubUrl: "https://github.com/username/project1",
+      "NoteForge is a MERN stack-based notes application that offers secure JWT-based authentication, customizable note colors, and a sleek interface powered by Vite and Tailwind CSS. Deployed on Vercel, it ensures a seamless and responsive user experience.",
+    techStack: ["ReactJS", "NodeJS", "TailwindCSS", "ExpressJS"],
+    lastUpdated: "2023-01-01",
+    imageUrl: "./Projects/NoteForge.jpeg",
+    githubUrl: "https://github.com/Cleveridiot07/NoteForge",
+    visitUrl: "https://noteforge-frontend.onrender.com/",
+    imageBg: "bg-amber-950",
   },
   {
-    title: "E-commerce Platform",
+    title: "Brain Tumor Classification",
     description:
-      "Full-stack e-commerce solution with real-time inventory management and payment processing.",
-    image: "/placeholder.svg",
-    techStack: [NextJsIcon, TypeScriptIcon, StripeIcon, DatabaseIcon],
-    liveUrl: "https://project2.demo",
-    githubUrl: "https://github.com/username/project2",
+      "This project is a Brain Tumor Detection API built with FastAPI and TensorFlow, allowing users to upload MRI images and predict tumor presence using a pre-trained CNN model. It is optimized for serverless deployment on AWS Lambda.",
+    techStack: ["Python", "FastAPI", "AWS"],
+    lastUpdated: "2023-12-28", 
+    imageUrl: "./Projects/BrainTumorClassification.webp",
+    githubUrl: "https://github.com/Cleveridiot07/BrainTumorClassificationUsingOpenCV",
+    visitUrl: "https://github.com/Cleveridiot07/BrainTumorClassificationUsingOpenCV",
+    imageBg: "bg-white",
   },
   {
-    title: "Real-time Chat Application",
+    title: "DevIDE",
     description:
-      "Feature-rich chat application with end-to-end encryption and file sharing capabilities.",
-    image: "/placeholder.svg",
-    techStack: [ReactIcon, SocketIcon, NodeIcon, DatabaseIcon],
-    liveUrl: "https://project3.demo",
-    githubUrl: "https://github.com/username/project3",
+      "A scalable, cloud-based IDE supporting real-time collaboration for developers. Designed for seamless remote development.",
+    techStack: ["ReactJS", "ExpressJS", "Docker", "Firebase", "TailwindCSS"],
+    lastUpdated: "2023-12-25",
+    imageUrl: "./Projects/CloudIDE.jpeg",
+    githubUrl: "https://github.com/Cleveridiot07/DevIDE",
+    visitUrl: "https://github.com/Cleveridiot07/DevIDE",
+    imageBg: "bg-amber-900",
   },
   {
-    title: "Blockchain Explorer",
+    title: "ImaGenie",
     description:
-      "Comprehensive blockchain explorer with real-time transaction tracking and wallet analysis.",
-    image: "/placeholder.svg",
-    techStack: [VueIcon, ReactIcon, NodeIcon, DatabaseIcon],
-    liveUrl: "https://project4.demo",
-    githubUrl: "https://github.com/username/project4",
+      "ImaGenie is a MERN stack application that leverages the Limewire API to generate and manage creative images with a modern, responsive interface built using Tailwind CSS. It offers users an intuitive and visually appealing experience.",
+    techStack: ["ReactJS", "NodeJS", "TailwindCSS", "ExpressJS","LimeWire API","AWS"],
+    lastUpdated: "2023-01-01",
+    imageUrl: "./Projects/ImaGenie.jpeg",
+    githubUrl: "https://github.com/Cleveridiot07/ImaGeine",
+    visitUrl: "https://github.com/Cleveridiot07/ImaGeine",
+    imageBg: "bg-gray-950",
+  },
+  {
+    title: "My Portfolio",
+    description:
+      "A visually stunning MERN stack portfolio featuring a sleek design, responsive interface, and a showcase of projects, skills, and achievements.",
+    techStack: ["ReactJS", "NodeJS", "TailwindCSS", "ExpressJS"],
+    lastUpdated: "2023-01-01",
+    imageUrl: "./Projects/Portfolio.jpg",
+    githubUrl: "https://github.com/Cleveridiot07/Portfolio",
+    visitUrl: "https://github.com/Cleveridiot07/Portfolio",
+    imageBg: "bg-gray-950",
   },
 ];
+
 
 export default function Projects() {
   return (
     <section
       id="projects"
-      className="py-20 space-y-10 relative overflow-hidden"
+      className="pt-16 relative overflow-hidden"
     >
-      <div className="h-fit w-screen flex justify-start">
-        <ProjectCard
-          title="DevIDE"
-          subtitle="Cloud Based IDE for Developers"
-          description="The project is a cloud-based IDE featuring a file explorer, terminal, and other developer tools. It leverages Docker containers to provide isolated development environments, allowing users to write, edit, and execute code directly in the cloud. The IDE offers real-time file browsing, code execution, and project management, all within a web-based interface."
-          technologies={[
-            "Docker",
-            "React",
-            "Node.js",
-            "Express",
-            "MongoDB",
-            "Tailwind CSS",
-            
-          ]}
-          imageSrc="./CloudIDE.png"
-          visitLink="https://github.com/Cleveridiot07/DevIDE"
-          sourceLink="https://github.com/Cleveridiot07/DevIDE"
-        />
-      </div>
-      <div className="h-fit w-screen flex justify-end">
-      <ProjectCard
-          title="DevIDE"
-          subtitle="Cloud Based IDE for Developers"
-          description="The project is a cloud-based IDE featuring a file explorer, terminal, and other developer tools. It leverages Docker containers to provide isolated development environments, allowing users to write, edit, and execute code directly in the cloud. The IDE offers real-time file browsing, code execution, and project management, all within a web-based interface."
-          technologies={[
-            "Docker",
-            "React",
-            "Node.js",
-            "Express",
-            "MongoDB",
-            "Tailwind CSS",
-            
-          ]}
-          imageSrc="./CloudIDE.png"
-          visitLink="https://github.com/Cleveridiot07/DevIDE"
-          sourceLink="https://github.com/Cleveridiot07/DevIDE"
-        />
-      </div>
-      <div className="h-fit w-screen flex justify-start">
-        <ProjectCard />
-      </div>
-      <div className="h-fit w-screen flex justify-end">
-        <ProjectCard />
-      </div>
+      <ProjectSlider projects={projects}/>
     </section>
   );
 }
