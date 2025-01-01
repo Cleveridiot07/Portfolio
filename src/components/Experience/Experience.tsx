@@ -25,7 +25,7 @@ const openSourceContributions = [
     ],
   },
   {
-    event: 'GSSOC 2024',
+    event: 'GSSoC 2024',
     location: 'Online',
     duration: 'September 2024 – November 2024',
     contributions: [
@@ -51,14 +51,14 @@ export default function Experience() {
           </motion.h2>
           <div className="min-w-screen flex items-center justify-center px-5 pt-5">
             {experiences.map((exp, index) => (
-              <div key={index} className="rounded-lg shadow-xl bg-gray-900 text-white mb-8 w-full max-w-4xl">
-                <div className="border-b border-gray-800 px-8 py-3">
+              <div key={index} className="rounded-lg shadow-xl bg-gray-800 text-white mb-8 w-full max-w-4xl">
+                <div className="border-b bg-gray-950 rounded-t-md border-gray-800 px-8 py-3">
                   <div className="inline-block w-3 h-3 mr-2 rounded-full bg-red-500"></div>
                   <div className="inline-block w-3 h-3 mr-2 rounded-full bg-yellow-300"></div>
                   <div className="inline-block w-3 h-3 mr-2 rounded-full bg-green-400"></div>
                 </div>
                 <div className="px-8 py-6">
-                  <h3 className="text-xl font-bold">{exp.role}</h3>
+                  <h3 className="text-xl text-green-500 font-bold">{exp.role}</h3>
                   <p className="text-sm text-gray-400">{exp.company} | {exp.location}</p>
                   <p className="text-sm text-gray-400">{exp.duration}</p>
                   <ul className="mt-3 list-disc list-inside">
@@ -86,14 +86,14 @@ export default function Experience() {
           </motion.h2>
           <div className="min-w-screen flex flex-col items-center justify-center px-5 space-y-8">
             {openSourceContributions.map((contribution, index) => (
-              <div key={index} className="rounded-lg shadow-xl bg-gray-900 text-white w-full max-w-4xl">
-                <div className="border-b border-gray-800 px-8 py-3">
+              <div key={index} className="rounded-lg shadow-xl bg-gray-800 text-white w-full max-w-4xl">
+                <div className="border-b bg-gray-950 rounded-t-md border-gray-800 px-8 py-3">
                   <div className="inline-block w-3 h-3 mr-2 rounded-full bg-red-500"></div>
                   <div className="inline-block w-3 h-3 mr-2 rounded-full bg-yellow-300"></div>
                   <div className="inline-block w-3 h-3 mr-2 rounded-full bg-green-400"></div>
                 </div>
                 <div className="px-8 py-6">
-                  <h3 className="text-xl font-bold">{contribution.event}</h3>
+                  <h3 className="text-xl text-red-500 font-bold">{contribution.event}</h3>
                   <p className="text-sm text-gray-400">{contribution.location}</p>
                   <p className="text-sm text-gray-400">{contribution.duration}</p>
                   <ul className="mt-3 list-disc list-inside">

@@ -47,7 +47,7 @@ const CustomCursor = () => {
       }
 
       draw() {
-        ctx.fillStyle = "rgba(0, 150, 255, 0.5)";
+        ctx.fillStyle = "#ffffff";
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
@@ -99,7 +99,7 @@ const CustomCursor = () => {
 
           if (distance < connectionDistance) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(0, 150, 255, ${1 - distance / connectionDistance})`;
+            ctx.strokeStyle = `rgba(255, 255, 255, ${1 - distance / connectionDistance})`;
             ctx.lineWidth = 1;
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(otherParticle.x, otherParticle.y);
@@ -159,7 +159,7 @@ const CustomCursor = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 bg-black w-full h-full pointer-events-none"
+      className="absolute inset-0 bg-[#0E1525] w-full h-full pointer-events-none"
     />
   );
 };

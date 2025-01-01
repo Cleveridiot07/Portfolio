@@ -38,7 +38,7 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, []);
   return (
-    <div className="min-h-fit pt-32 flex items-center justify-center relative overflow-hidden">
+    <div className="min-h-fit md:min-h-screen pt-32 flex items-center justify-center relative overflow-hidden">
       <div className="container  mx-auto mb-16  px-10 lg:px-28 z-10">
         <div className="flex flex-col  md:flex-row items-center justify-between gap-12">
           <motion.div

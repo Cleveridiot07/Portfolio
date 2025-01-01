@@ -1,15 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import CodingProfiles from "./components/CodingProfiles";
-import GithubStats from "./components/GithubStats";
-import Experience from "./components/Experience";
-import Projects from "./components/Projects";
-import Contact from "./components/Contact";
+import Navbar from "./components/Common/Navbar/Navbar";
+import Hero from "./components/LandingPage/Hero/Hero";
+import About from "./components/About/About";
+// import CodingProfiles from "./components/LandingPage/CodingProfiles/CodingProfiles";
+// import GithubStats from "./components/LandingPage/GithubStats/GithubStats";
+import Experience from "./components/Experience/Experience";
+import Projects from "./components/Projects/Projects";
+import Contact from "./components/Contact/Contact";
 import Layout from "./Layout/Layout";
-import Footer from "./components/Footer";
-import Skills from "./components/Skills";
+import Footer from "./components/Common/Footer/Footer";
+import Skills from "./components/Skills/Skills";
 
 export default function App() {
   return (
