@@ -5,8 +5,8 @@ import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Instagram, Send } from 
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-20 bg-black relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,#1a1a1a,#000000)]" />
+    <section id="contact" className="py-20  relative overflow-hidden">
+      {/* <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,#1a1a1a,#000000)]" />
       <div className="container mx-auto px-4 relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -121,7 +121,7 @@ export default function Contact() {
             </form>
           </motion.div>
         </div>
-      </div>
+      </div> */}
     </section>
   )
 }

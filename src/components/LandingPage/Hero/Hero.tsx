@@ -19,8 +19,14 @@ export default function Hero() {
         setText(fullText.slice(0, text.length + 1));
       }, 100);
       return () => clearTimeout(timeout);
+    } else {
+      const resetTimeout = setTimeout(() => {
+        setText("");
+      }, 5000); // Wait 3 seconds before resetting
+      return () => clearTimeout(resetTimeout);
     }
   }, [text]);
+  
 
   // Cursor blink effect
   useEffect(() => {

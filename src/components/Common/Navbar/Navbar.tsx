@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Download } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation(); // Get current route
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -30,7 +31,9 @@ export default function Navbar() {
                 <Link
                   key={item.name}
                   to={item.path}
-                  className="text-white hover:text-cyan-500"
+                  className={`text-white hover:text-cyan-500 ${
+                    location.pathname === item.path ? "text-sky-500" : ""
+                  }`}
                 >
                   {item.name}
                 </Link>
@@ -61,7 +64,9 @@ export default function Navbar() {
                 <Link
                   key={item.name}
                   to={item.path}
-                  className="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-cyan-500"
+                  className={`block px-3 py-2 rounded-md text-base font-medium text-white hover:text-cyan-500 ${
+                    location.pathname === item.path ? "text-sky-500" : ""
+                  }`}
                 >
                   {item.name}
                 </Link>

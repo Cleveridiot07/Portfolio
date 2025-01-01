@@ -36,8 +36,9 @@ const About = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      <div className="w-full max-w-3xl z-20 flex flex-col">
-        <h2 className="text-5xl text-center font-bold mb-5">About</h2>
+      <div className="w-full max-w-3xl z-20 flex items-center flex-col">
+      <h1 className="text-4xl text-center max-w-xl md:text-7xl mb-5 font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">About</h1>
+        {/* <h2 className="text-5xl  text-center font-bold mb-5">About</h2> */}
         <p className="w-full px-5 text-center font-semibold text-gray-50">
           As a dynamic and versatile developer, I specialize in crafting
           seamless experiences across frontend, backend, and full-stack
