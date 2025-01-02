@@ -38,7 +38,7 @@ const SkillCard: React.FC<SkillCardProps> = ({
                     <strong>{skillLevel}</strong>
                   </p>
                   <svg
-                    fill-rule="nonzero"
+                    fillRule="nonzero"
                     height="15px"
                     width="15px"
                     viewBox="0,0,256,256"
@@ -46,18 +46,18 @@ const SkillCard: React.FC<SkillCardProps> = ({
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <g
-                      text-anchor="none"
-                      font-size="none"
-                      font-weight="none"
-                      font-family="none"
-                      stroke-dashoffset="0"
-                      stroke-dasharray=""
-                      stroke-miterlimit="10"
-                      stroke-linejoin="miter"
-                      stroke-linecap="butt"
-                      stroke-width="1"
+                      textAnchor="none"
+                      fontSize="none"
+                      fontWeight="none"
+                      fontFamily="none"
+                      strokeDashoffset="0"
+                      strokeDasharray=""
+                      strokeMiterlimit="10"
+                      strokeLinejoin="miter"
+                      strokeLinecap="butt"
+                      strokeWidth="1"
                       stroke="none"
-                      fill-rule="nonzero"
+                      fillRule="nonzero"
                       fill="#20c997"
                     >
                       <g transform="scale(8,8)">

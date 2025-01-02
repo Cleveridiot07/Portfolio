@@ -36,8 +36,8 @@ export default function ProjectSlider({ projects }: ProjectSliderProps) {
   }, [currentIndex, isPaused]);
 
   return (
-    <div className="w-screen flex items-center justify-center">
-      <div className="relative md:h-[650px] h-screen w-[70%] overflow-hidden bg-black/5 p-8">
+    <div className="w-screen  min-h-screen  flex items-center justify-center">
+      <div className="relative md:h-[650px] h-screen md:w-[70%] w-full overflow-hidden bg-black/5 p-8">
         <div
           className="relative h-full w-full"
           onMouseEnter={() => setIsPaused(true)}

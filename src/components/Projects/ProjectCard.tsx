@@ -31,7 +31,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   imageBg = "bg-gray-50",
 }) => {
   return (
-    <div className="flex items-center h-full justify-center">
+    <div className="flex items-center h-full overflow-scroll justify-center">
       <div className="flex w-full max-w-4xl h-full flex-col overflow-hidden rounded-sm bg-white shadow-lg lg:flex-row">
         {/* Illustration */}
         <div className="w-full bg-sky-900 lg:w-1/2">
@@ -43,7 +43,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
 
         {/* Content */}
-        <div className="w-full p-8 lg:w-1/2">
+        <div className="w-full p-8 lg:w-1/2 overflow-scroll">
           <div className="space-y-1 pb-6">
             <div className="flex items-center justify-between">
               <h1 className="text-3xl text-black font-bold">{title}</h1>
@@ -63,7 +63,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             {techStack.length > 0 && (
               <div className="space-y-3">
                 <h3 className="font-semibold text-gray-900">Tech Stack</h3>
-                <div className="grid grid-cols-2 gap-2 sm:grid-cols-2">
+                <div className="grid md:grid-cols-2 gap-2 sm:grid-cols-1">
                   {techStack.map((tech, index) => (
                     <div
                       key={index}
@@ -81,7 +81,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               </div>
             )}
 
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-2 gap-3">
               <a
                 href={visitUrl}
                 className="flex items-center justify-center gap-2 rounded-sm border bg-sky-950 px-3 text-white py-2 text-sm transition-colors hover:bg-sky-800"
@@ -91,7 +91,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               </a>
               <a
                 href={githubUrl}
-                className="flex items-center justify-center gap-2 rounded-sm border bg-gray-200 px-3 py-2 text-sm text-black transition-colors hover:bg-gray-50"
+                className="flex items-center justify-center gap-2 rounded-sm border bg-gray-200 px-4 py-2 text-sm text-black transition-colors hover:bg-gray-50"
               >
                 <img src="./Skills/Github.png" alt="GitHub" className="h-6 w-5" />
                 GitHub

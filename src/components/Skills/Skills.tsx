@@ -14,7 +14,7 @@ const Languages: TypeSkills[] = [
   },
   {
     skillName: "Python",
-    skillLevel: "Intermediate",
+    skillLevel: "Beginner",
     iconPath: "./Skills/Python.png",
   },
 ];
@@ -73,7 +73,7 @@ const DevTools: TypeSkills[] = [
   },
   {
     skillName: "Docker",
-    skillLevel: "Intermediate",
+    skillLevel: "Beginner",
     iconPath: "./Skills/Docker.png",
   },
 ];

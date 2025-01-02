@@ -66,7 +66,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="pt-16 relative overflow-hidden"
+      className="py-16 relative min-h-screen overflow-scroll"
     >
       <ProjectSlider projects={projects}/>
     </section>
