@@ -4,12 +4,33 @@ import { Project } from "../../interfaces";
 
 
 const projects:Project[] = [
-
+  {
+    title: "Dhwani",
+    description:
+      "A full-stack music streaming application with real-time features powered by WebSockets, ensuring seamless audio playback and interactive user engagement.",
+    techStack: ["MERN", "Typescript", "SocketIO", "Docker", "AWS_EC2"],
+    lastUpdated: "2025-03-13",
+    imageUrl: "./Projects/Dhwani.jpeg",
+    githubUrl: "https://github.com/Cleveridiot07/Dhwani-Music-that-Connects-You",
+    visitUrl: "https://dhwani-music-v1.netlify.app/",
+    imageBg: "bg-white",
+  },
+  {
+    title: "MockMate",
+    description:
+      "An AI-powered interview preparation platform that generates dynamic, role-specific questions, enhancing candidate readiness with real-time feedback.",
+    techStack: ["MERN", "Typescript", "Gemini", "Firebase", "Azure","AWS_Lambda"],
+    lastUpdated: "2025-03-13",
+    imageUrl: "./Projects/Mockmate.jpeg",
+    githubUrl: "https://github.com/Cleveridiot07/MockMate",
+    visitUrl: "https://mockmate-ai.netlify.app/",
+    imageBg: "bg-white",
+  },  
   {
     title: "VocaScribe",
     description:
       "A seamless speech-to-text transcriber that transforms your voice into accurate, real-time text with ease and efficiency.",
-    techStack: ["ReactJS", "Typescript", "AWS","Microsoft Azure"],
+    techStack: ["ReactJS", "Typescript", "AWS","Azure"],
     lastUpdated: "2025-01-03", 
     imageUrl: "./Projects/Ai.jpeg",
     githubUrl: "https://github.com/Cleveridiot07/Vocascribe-Text-to-Speech-convertor",
@@ -26,6 +47,17 @@ const projects:Project[] = [
     githubUrl: "https://github.com/Cleveridiot07/BrainTumorClassificationUsingOpenCV",
     visitUrl: "https://github.com/Cleveridiot07/BrainTumorClassificationUsingOpenCV",
     imageBg: "bg-white",
+  },
+  {
+    title: "Note Forge",
+    description:
+      "NoteForge is a MERN stack-based notes application that offers secure JWT-based authentication, customizable note colors, and a sleek interface powered by Vite and Tailwind CSS. Deployed on Vercel, it ensures a seamless and responsive user experience.",
+    techStack: ["ReactJS", "NodeJS", "TailwindCSS", "ExpressJS"],
+    lastUpdated: "2023-08-01",
+    imageUrl: "./Projects/NoteForge.jpeg",
+    githubUrl: "https://github.com/Cleveridiot07/NoteForge",
+    visitUrl: "https://noteforgev1.netlify.app/",
+    imageBg: "bg-amber-950",
   },
   {
     title: "DevIDE",
@@ -59,17 +91,6 @@ const projects:Project[] = [
     githubUrl: "https://github.com/Cleveridiot07/Portfolio",
     visitUrl: "https://cleveridiot07.netlify.app/",
     imageBg: "bg-gray-950",
-  },
-  {
-    title: "Note Forge",
-    description:
-      "NoteForge is a MERN stack-based notes application that offers secure JWT-based authentication, customizable note colors, and a sleek interface powered by Vite and Tailwind CSS. Deployed on Vercel, it ensures a seamless and responsive user experience.",
-    techStack: ["ReactJS", "NodeJS", "TailwindCSS", "ExpressJS"],
-    lastUpdated: "2023-08-01",
-    imageUrl: "./Projects/NoteForge.jpeg",
-    githubUrl: "https://github.com/Cleveridiot07/NoteForge",
-    visitUrl: "https://noteforge-frontend.onrender.com/",
-    imageBg: "bg-amber-950",
   },
 ];
 

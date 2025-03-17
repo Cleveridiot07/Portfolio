@@ -18,6 +18,13 @@ const Skills:SkillsType = {
   Typescript: "./Skills/Typescript.png",
   Default: "./Skills/Skill.png",
   AWS: "./Skills/Aws.png",
+  AWS_Lambda: "./Skills/Aws.png",
+  AWS_EC2: "./Skills/Aws.png",
+  MERN: "./Skills/MERN.png",
+  Gemini: "./Skills/Gemini.png",
+  Firebase: "./Skills/Firebase.png",
+  Azure: "./Skills/Azure.png",
+  SocketIO: "./Skills/Socket.png",
 };
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
